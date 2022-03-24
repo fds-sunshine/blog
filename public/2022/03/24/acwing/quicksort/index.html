@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://gitee.com/violet-bug/imageurl/raw/master/acwing/quicksort/7.png">
 <meta property="og:image" content="https://gitee.com/violet-bug/imageurl/raw/master/acwing/quicksort/8.png">
 <meta property="article:published_time" content="2022-03-24T02:58:50.000Z">
-<meta property="article:modified_time" content="2022-03-24T08:07:05.735Z">
+<meta property="article:modified_time" content="2022-03-24T08:11:17.585Z">
 <meta property="article:author" content="violet">
 <meta property="article:tag" content="快速排序">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,7 +225,7 @@
             <h1 style="display: none">快速排序</h1>
             
             <div class="markdown-body">
-              <h1 id="快速排序-如有不足之处-请各方大佬在底下批评指正"><a href="#快速排序-如有不足之处-请各方大佬在底下批评指正" class="headerlink" title="快速排序(如有不足之处, 请各方大佬在底下批评指正!!!)"></a>快速排序(如有不足之处, 请各方大佬在底下批评指正!!!)</h1><p>快速排序是从冒泡排序演变而来的算法，但是它比快排要高效得多，所以我们把它叫做快速排序😂<br>快速排序之所以快，是因为它用到了一个思想😮 ———&gt; 分治(不懂的可以百度哟😁)</p>
+              <h1 id="快速排序-如有不足之处-请各方大佬在底下批评指正"><a href="#快速排序-如有不足之处-请各方大佬在底下批评指正" class="headerlink" title="快速排序(如有不足之处, 请各方大佬在底下批评指正!!!)"></a>快速排序(如有不足之处, 请各方大佬在底下批评指正!!!)</h1><p>快速排序是从冒泡排序演变而来的算法，但是它比冒泡排序要高效得多，所以我们把它叫做快速排序😂<br>快速排序之所以快，是因为它用到了一个思想😮 ———&gt; 分治(不懂的可以百度哟😁)</p>
 <p>那么快排是怎么实现的呢?让我们来看一下下面的图文解释:</p>
 <h4 id="1-我们需要确定一个分界点-例如图中以标蓝的方格作为分界点7"><a href="#1-我们需要确定一个分界点-例如图中以标蓝的方格作为分界点7" class="headerlink" title="1. 我们需要确定一个分界点, 例如图中以标蓝的方格作为分界点7:"></a>1. 我们需要确定一个分界点, 例如图中以标蓝的方格作为分界点7:</h4><p> <img src="https://gitee.com/violet-bug/imageurl/raw/master/acwing/quicksort/1.png" srcset="/fds-sunshine.github.io/img/loading.gif" lazyload></p>
 <h4 id="2-然后我们把小于分界点的元素放在分界点的左边-例如上图的-1-3-4-5-并且把大于分界点的元素放在分界点的右边-例如上图的-8-10-12-放置好后大概是这样的-不一定是这样-有可能是其它的情况-此时-在分界点左边的元素小于或等于分界点-在分界点右边的元素大于或等于分界点"><a href="#2-然后我们把小于分界点的元素放在分界点的左边-例如上图的-1-3-4-5-并且把大于分界点的元素放在分界点的右边-例如上图的-8-10-12-放置好后大概是这样的-不一定是这样-有可能是其它的情况-此时-在分界点左边的元素小于或等于分界点-在分界点右边的元素大于或等于分界点" class="headerlink" title="2. 然后我们把小于分界点的元素放在分界点的左边,例如上图的(1, 3, 4, 5), 并且把大于分界点的元素放在分界点的右边, 例如上图的(8, 10, 12), 放置好后大概是这样的(不一定是这样,有可能是其它的情况), 此时, 在分界点左边的元素小于或等于分界点, 在分界点右边的元素大于或等于分界点:"></a>2. 然后我们把<strong>小于分界点</strong>的元素放在分界点的左边,例如上图的(1, 3, 4, 5), 并且把<strong>大于分界点</strong>的元素放在分界点的右边, 例如上图的(8, 10, 12), 放置好后大概是这样的(不一定是这样,有可能是其它的情况), 此时, 在<strong>分界点</strong>左边的元素<strong>小于或等于</strong>分界点, 在<strong>分界点</strong>右边的元素<strong>大于或等于</strong>分界点:</h4><p><img src="https://gitee.com/violet-bug/imageurl/raw/master/acwing/quicksort/2.png" srcset="/fds-sunshine.github.io/img/loading.gif" lazyload></p>
