@@ -656,7 +656,7 @@ post:
     # 指定的插件，需要同时设置对应插件的必要参数
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis
-    type: valine
+    type: waline
 
 
 #---------------------------
@@ -718,7 +718,7 @@ gitalk:
 # Based on LeanCloud
 # See: https://valine.js.org/
 valine:
-  appId: 2OHPFu77sAr6enY2uv133YPJ-gzGzoHsz
+  appId: 2OHPFu77sAr6enY2uv133YPJ-gzGzoHsz 
   appKey: nYVFmX432pfU0XGJIQ1dbEOc
   path: window.location.pathname
   placeholder:
@@ -732,14 +732,14 @@ valine:
   serverURLs: 'https://2ohpfu77.lc-cn-n1-shared.com'
   emojiCDN:
   emojiMaps:
-  enableQQ: false
+  enableQQ: true
 
 # Waline
 # 从 Valine 衍生而来，额外增加了服务端和多种功能
 # Derived from Valine, with self-hosted service and new features
 # See: https://waline.js.org/
 waline:
-  serverURL: ''
+  serverURL: 'https://comment-system-2qwigq5oa-fds-sunshine.vercel.app/'
   path: window.location.pathname
   placeholder:
   meta: ['nick', 'mail', 'link']
@@ -759,8 +759,8 @@ waline:
 # Based on third-party service, insufficient support for regions outside China
 # http://changyan.kuaizhan.com
 changyan:
-  appid: ''
-  appkey: ''
+  appid: 'cyvYlPtdD'
+  appkey: '282e01d113c0af6f6e4780773292feae'
 
 # 来必力 Livere
 # 基于第三方的服务
