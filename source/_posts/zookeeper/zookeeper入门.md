@@ -209,5 +209,5 @@ ZAB协议包括两种基本的模式，分别是
 5. ZooKeeper 有临时节点的概念。 当创建临时节点的客户端会话一直保持活动，瞬时节点就一直存在。而当会话终结时，瞬时节点被删除。持久节点是指一旦这个 znode 被创建了，除非主动进行 znode 的移除操作，否则这个 znode 将一直保存在 ZooKeeper 上。
 6. ZooKeeper 底层其实只提供了两个功能：① 管理（存储、读取）用户程序提交的数据；② 为用户程序提供数据节点监听服务。
 ## 7. 参考
-1. [《JavaGuide》——ZooKeeper相关概念总结（入门）](https://javaguide.cn/distributed-system/distributed-process-coordination/zookeeper/zookeeper-intro.html#_5-2-zab-%E5%8D%8F%E8%AE%AE%E4%B8%A4%E7%A7%8D%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%A8%A1%E5%BC%8F-%E5%B4%A9%E6%BA%83%E6%81%A2%E5%A4%8D%E5%92%8C%E6%B6%88%E6%81%AF%E5%B9%BF%E6%92%AD)
+1. [《JavaGuide》——ZooKeeper相关概念总结（入门）](https://javaguide.cn/)
 2. 《从 Paxos 到 ZooKeeper 分布式一致性原理与实践》
