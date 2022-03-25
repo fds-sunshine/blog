@@ -134,3 +134,50 @@ Watcher（事件监听器），是ZooKeeper中的一个很重要的特性。ZooK
 王之怒吼👿：非常有用的一个特性，都拿出小本本记好了，后面用到ZooKeeper基本离不开Watcher（事件监听）机制。
 
 ## 3.6 会话（Session）
+Session 可以看做是ZooKeeper服务器与客户端之间的一个TCP长连接，通过这个连接，客户端能够通过心跳检测与服务器保持有效的会话，也能向ZooKeeper服务器发送请求并接受响应，同时还能够通过该连接接收来自服务器的Watcher事件通知。
+
+Session有一个属性叫作：sessionTimeout，sessionTimeout代表会话的超时时间。当由于服务器压力太大、网络故障或是客户端主动断开连接等各种原因导致客户端连接断开时，只要在sessionTimeout规定的时间内能够重新连接上集群中任意一台服务器，那么之前创建的会话依然有效。
+
+另外，在为客户端创建会话之前，服务端首先会为每个客户端都分配一个sessionID。由于sessionID是ZooKeeper会话的一个重要标识，许多与会话相关的运行机制都是基于这个sessionID的，因此，无论是哪台服务器为客户端分配的sessionID，都务必保证全局唯一。
+
+## 4. ZooKeeper集群
+为了保证高可用，最好是以集群形态来部署ZooKeeper，这样只要集群中大部分机器是可用的（能够容忍一定的机器故障），那么ZooKeeper本身仍然是可用的。通常3台服务器就可以构成一个ZooKeeper集群了。ZooKeeper官方提供的架构图就是一个ZooKeeper集群整体对外提供服务。
+![](https://javaguide.cn/assets/zookeeper%E9%9B%86%E7%BE%A4.6fdcc61e.png)
+上图中每一个Server代表一个安装ZooKeeper服务的服务器。组成ZooKeeper服务的服务器都会在内存中维护当前的服务器状态，并且每台服务器之间都保持着通信。集群间通过ZAB协议（ZooKeeper Atomic Broadcast）来保持数据的一致性。
+
+**最典型集群模式**：**Master/Slave模式（主备模式）。在这种模式中，通常Master服务器作为主服务器提供写服务，其他的Slave服务器从服务器通过异步复制的方式获取Master服务器最新的数据提供读服务。
+
+### 4.1 ZooKeeper集群角色
+但是，在ZooKeeper中没有选择传统的Master/Slave概念，而是引入了Leader、Follower和Observer三种角色。如下图所示
+![](https://javaguide.cn/assets/zookeeper%E9%9B%86%E7%BE%A4%E4%B8%AD%E7%9A%84%E8%A7%92%E8%89%B2.ffff8ef5.png)
+ZooKeeper集群中的所有机器通过一个Leader**选举过程**来选定一台称为"Leader"的机器，Leader既可以为客户端提供写服务又能提供读服务。除了Leader外，**Follower**和**Observer**都只能提供读服务。Follower和Observer唯一的区别在于Observer机器不参与Leader的选举过程，也不参与写操作的"过半写成功"策略，因此Observer机器可以在不影响写性能的情况下提升集群的读性能。
+
+|角色|说明|
+|-|-|
+|Leader|为客户提供读和写的服务，负责投票的发起和决议，更新系统状态。|
+|Follower|为客户端提供读服务，如果是写服务则转发给Leader。参与选举过程中的投票。|
+|Observer|为客户端提供读服务，如果是写服务则转发给Leader。不参与选举过程中的投票，也不参与"过半写成功"策略。在不影响写性能的情况下提升集群的读性能。此角色于ZooKeeper3.3系列新增的角色。|
+
+当Leader服务器出现网络中断、崩溃退出与重启等异常情况时，就会进入Leader选举过程，这个过程会选举产生新的Leader服务器。
+
+这个过程大概是这样子的：
+1. Leader election在（选举阶段）：节点在一开始都处于选举阶段，只要有一个节点得到超半数节点的票数，它就可以当选准leader。
+2. Discovery（发现阶段）：在这个阶段，followers跟准leader进行通信，同步followers最近接收的事务提议。
+3. Synchronization（同步阶段）：同步阶段主要是利用leader前一阶段获得的最新提议历史，同步集群中所有的副本。同步完成之后准leader才会成为真正的leader。
+4. Broadcast（广播阶段）：到了这个阶段，ZooKeeper集群才能正式对外提供事务服务，并且leader可以进行消息广播。同时如果有新的节点加入，还需要对新节点进行同步。
+
+### 4.2 ZooKeeper集群中的服务器状态
+- **LOOKING**：寻找Leader。
+- **LEADING**：Leader状态，对应的节点为Leader。
+- **FOLLOWING**：Follower状态，对应的节点为Follower。
+- **OBSERVING**：Observer状态，对应节点为Observer，该节点不参与Leader选举。
+
+### 4.3 ZooKeeper集群为啥最好是奇数台？
+ZooKeeper集群在宕掉几个ZooKeeper服务器之后，如果剩下的ZooKeeper服务器个数大于宕掉的个数的话整个ZooKeeper才依然可用。假如我们的集群中有n台ZooKeeper服务器，那么也就是剩下的服务数必须大于n/2。先说一下结论，2n和2n-1的容忍度是一样的，都是n-1，大家可以先自己仔细想一想。
+
+比如：假如我们有3台，那么最大允许宕掉1台ZooKeeper服务器，如果我们有4台的的时候也同样只允许宕掉1台。 假如我们有5台，那么最大允许宕掉2台ZooKeeper服务器，如果我们有6台的的时候也同样只允许宕掉2台。
+
+综上，何必增加那一个不必要的ZooKeeper服务器呢？
+
+### 4.4 ZooKeeper选举的过半机制防止脑裂
+##### 何为集群脑裂？
