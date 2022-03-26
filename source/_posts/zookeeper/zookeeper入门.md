@@ -140,7 +140,7 @@ Session有一个属性叫作：sessionTimeout，sessionTimeout代表会话的超
 
 另外，在为客户端创建会话之前，服务端首先会为每个客户端都分配一个sessionID。由于sessionID是ZooKeeper会话的一个重要标识，许多与会话相关的运行机制都是基于这个sessionID的，因此，无论是哪台服务器为客户端分配的sessionID，都务必保证全局唯一。
 
-## 4. ZooKeeper集群
+# 4. ZooKeeper集群
 为了保证高可用，最好是以集群形态来部署ZooKeeper，这样只要集群中大部分机器是可用的（能够容忍一定的机器故障），那么ZooKeeper本身仍然是可用的。通常3台服务器就可以构成一个ZooKeeper集群了。ZooKeeper官方提供的架构图就是一个ZooKeeper集群整体对外提供服务。
 ![](https://javaguide.cn/assets/zookeeper%E9%9B%86%E7%BE%A4.6fdcc61e.png)
 上图中每一个Server代表一个安装ZooKeeper服务的服务器。组成ZooKeeper服务的服务器都会在内存中维护当前的服务器状态，并且每台服务器之间都保持着通信。集群间通过ZAB协议（ZooKeeper Atomic Broadcast）来保持数据的一致性。
@@ -188,7 +188,7 @@ ZooKeeper集群在宕掉几个ZooKeeper服务器之后，如果剩下的ZooKeepe
 ##### 过半机制是如何防止脑裂现象产生的？
 ZooKeeper的过半机制导致不可能产生2个leader，因为少于等于一半是不可能产生leader的，这就使得不论机房的机器如何分配都不可能发生脑裂。
 
-## 5. ZAB协议和Paxos算法
+# 5. ZAB协议和Paxos算法
 Paxos算法应该可以说是ZooKeeer的灵魂了。但是，ZooKeeper并没有完全采用Paxos算法，而是使用ZAB协议作为其保证数据一致性的核心算法。另外，在ZooKeeper的官方文档中也指出，ZAB协议并不想Paxos算法那样，是一种通用的分布式一致性算法，它是一种特别为ZooKeeper设计的崩溃可恢复的原子消息广播算法。
 
 ### 5.1 ZAB协议介绍
@@ -201,13 +201,13 @@ ZAB协议包括两种基本的模式，分别是
 - **消息广播：当集群中已经有过半的Follwer服务器完成了和Leader服务器的状态同步，name整个服务框架就可以进入消息广播模式了**。当一台同样遵守ZAB协议的服务器启动后加入到集群中时，如果此时集群中已经存在一个Leader服务器在负责进行消息广播，那么新加入的服务器就会自觉地进入数据恢复模式：找到Leader所在的服务器，并与其进行数据同步，然后一起参与到消息广播流程中去。
 
 
-## 6. 总结
+# 6. 总结
 1. ZooKeeper 本身就是一个分布式程序（只要半数以上节点存活，ZooKeeper 就能正常服务）。
 2. 为了保证高可用，最好是以集群形态来部署 ZooKeeper，这样只要集群中大部分机器是可用的（能够容忍一定的机器故障），那么 ZooKeeper 本身仍然是可用的。
 3. ZooKeeper 将数据保存在内存中，这也就保证了 高吞吐量和低延迟（但是内存限制了能够存储的容量不太大，此限制也是保持 znode 中存储的数据量较小的进一步原因）。
 4. ZooKeeper 是高性能的。 在“读”多于“写”的应用程序中尤其地明显，因为“写”会导致所有的服务器间同步状态。（“读”多于“写”是协调服务的典型场景。）
 5. ZooKeeper 有临时节点的概念。 当创建临时节点的客户端会话一直保持活动，瞬时节点就一直存在。而当会话终结时，瞬时节点被删除。持久节点是指一旦这个 znode 被创建了，除非主动进行 znode 的移除操作，否则这个 znode 将一直保存在 ZooKeeper 上。
 6. ZooKeeper 底层其实只提供了两个功能：① 管理（存储、读取）用户程序提交的数据；② 为用户程序提供数据节点监听服务。
-## 7. 参考
+# 7. 参考
 1. [《JavaGuide》——ZooKeeper相关概念总结（入门）](https://javaguide.cn/)
 2. 《从 Paxos 到 ZooKeeper 分布式一致性原理与实践》
