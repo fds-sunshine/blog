@@ -2,7 +2,7 @@
 title: 二、zookeeper入门
 date: 2022-03-25 11:09:47
 tags: zookeeper
-category: zookeeper
+categories: ['分布式基础', 'zookeeper']
 description: 介绍zookeeper的入门概念、数据模型、应用场景以及Java对它进行整合。
 ---
 # 1. 前言<br/>
