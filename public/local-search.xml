@@ -4,57 +4,7 @@
   
   
   <entry>
-    <title>安装docker（centos）</title>
-    <link href="/fds-sunshine.github.io/2022/03/26/docker/docker-install/"/>
-    <url>/fds-sunshine.github.io/2022/03/26/docker/docker-install/</url>
-    
-    <content type="html"><![CDATA[<h1 id="安装docker（centos）"><a href="#安装docker（centos）" class="headerlink" title="安装docker（centos）"></a>安装docker（centos）</h1><h2 id="1-卸载旧版本"><a href="#1-卸载旧版本" class="headerlink" title="1. 卸载旧版本"></a>1. 卸载旧版本</h2><figure class="highlight livescript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs livescript">$ sudo yum remove docker <span class="hljs-string">\</span><br>    docker-client <span class="hljs-string">\</span><br>    docker-client-latest <span class="hljs-string">\</span><br>    docker-common <span class="hljs-string">\</span><br>    docker-latest <span class="hljs-string">\</span><br>    docker-latest-logrotate <span class="hljs-string">\</span><br>    docker-logrotate <span class="hljs-string">\</span><br>    docker-engine<br></code></pre></div></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>docker</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>docker</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>docker配置nginx</title>
-    <link href="/fds-sunshine.github.io/2022/03/26/docker/docker-nginx/"/>
-    <url>/fds-sunshine.github.io/2022/03/26/docker/docker-nginx/</url>
-    
-    <content type="html"><![CDATA[<h1 id="docker配置nginx"><a href="#docker配置nginx" class="headerlink" title="docker配置nginx"></a>docker配置nginx</h1>]]></content>
-    
-    
-    <categories>
-      
-      <category>docker</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>nginx</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>一、zookeeper入门</title>
+    <title>二、zookeeper入门</title>
     <link href="/fds-sunshine.github.io/2022/03/25/zookeeper/zookeeper%E5%85%A5%E9%97%A8/"/>
     <url>/fds-sunshine.github.io/2022/03/25/zookeeper/zookeeper%E5%85%A5%E9%97%A8/</url>
     
