@@ -1,5 +1,5 @@
 ---
-title: 二、zookeeper入门
+title: zookeeper入门
 date: 2022-03-25 11:09:47
 tags: zookeeper
 categories: ['分布式基础', 'zookeeper']
