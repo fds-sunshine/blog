@@ -16,21 +16,21 @@
   <meta name="author" content="violet">
   <meta name="keywords" content="">
   
-    <meta name="description" content="使用docker配置mysql。">
+    <meta name="description" content="简单介绍redis的数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker配置mysql(挂载配置文件)">
-<meta property="og:url" content="https://github.com/fds-sunshine/fds-sunshine.github.io.git/2022/04/14/docker/docker-mysql/index.html">
+<meta property="og:title" content="redis数据结构">
+<meta property="og:url" content="https://github.com/fds-sunshine/fds-sunshine.github.io.git/2022/06/07/redis/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="追风少年">
-<meta property="og:description" content="使用docker配置mysql。">
+<meta property="og:description" content="简单介绍redis的数据结构">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-14T02:44:07.000Z">
-<meta property="article:modified_time" content="2022-06-07T07:08:21.727Z">
+<meta property="article:published_time" content="2022-06-07T07:19:51.000Z">
+<meta property="article:modified_time" content="2022-06-07T07:43:22.944Z">
 <meta property="article:author" content="violet">
-<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="redis">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>docker配置mysql(挂载配置文件) - 追风少年</title>
+  <title>redis数据结构 - 追风少年</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -152,9 +152,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="docker配置mysql(挂载配置文件)">
+            <span class="h2" id="subtitle" title="redis数据结构">
               
-                docker配置mysql(挂载配置文件)
+                redis数据结构
               
             </span>
 
@@ -164,8 +164,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-04-14 10:44" pubdate>
-        2022年4月14日 上午
+      <time datetime="2022-06-07 15:19" pubdate>
+        2022年6月7日 下午
       </time>
     </span>
   
@@ -175,7 +175,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      347 字
     </span>
   
 
@@ -184,7 +184,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13 分钟
+      3 分钟
     </span>
   
 
@@ -213,35 +213,19 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">docker配置mysql(挂载配置文件)</h1>
+            <h1 style="display: none">redis数据结构</h1>
             
             <div class="markdown-body">
-              <h1 id="1-安装docker"><a href="#1-安装docker" class="headerlink" title="1. 安装docker"></a>1. 安装docker</h1><p><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/centos-docker-install.html">安装docker</a></p>
-<h1 id="2-Docker配置Mysql"><a href="#2-Docker配置Mysql" class="headerlink" title="2. Docker配置Mysql"></a>2. Docker配置Mysql</h1><h2 id="2-1-拉取镜像"><a href="#2-1-拉取镜像" class="headerlink" title="2.1 拉取镜像"></a>2.1 拉取镜像</h2><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">docker pull <span class="hljs-selector-attr">[mysql镜像名称]</span><br>即：docker pull mysql<br></code></pre></div></td></tr></table></figure>
-<blockquote>
-<p>如果不带版本号则默认获取最新的版本latest</p>
-</blockquote>
-<h2 id="2-2-挂载数据卷以及配置文件"><a href="#2-2-挂载数据卷以及配置文件" class="headerlink" title="2.2 挂载数据卷以及配置文件"></a>2.2 挂载数据卷以及配置文件</h2><h3 id="2-2-1-先创建一个mysql容器"><a href="#2-2-1-先创建一个mysql容器" class="headerlink" title="2.2.1 先创建一个mysql容器"></a>2.2.1 先创建一个mysql容器</h3><p>运行mysql命名容器名称为mysql-service并且设置root账号初始密码为root</p>
-<figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros">docker <span class="hljs-built_in">run</span> -d -p 3306:3306 --name mysql-service -e <span class="hljs-attribute">MYSQL_ROOT_PASSWORD</span>=root  mysql<br></code></pre></div></td></tr></table></figure>
-
-<h3 id="2-2-2-进入Docker容器内并查看配置文件地址"><a href="#2-2-2-进入Docker容器内并查看配置文件地址" class="headerlink" title="2.2.2 进入Docker容器内并查看配置文件地址"></a>2.2.2 进入Docker容器内并查看配置文件地址</h3><figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">[root@violet ~]<span class="hljs-comment"># docker exec -it mysql-service bash </span><br><br>[root@violet ~]<span class="hljs-comment"># mysql --help | grep my.cnf</span><br><br>root@<span class="hljs-number">27</span>b63c80ecfa:/<span class="hljs-comment"># mysql --help | grep my.cnf</span><br>                      order of preference, my.cnf, <span class="hljs-variable">$MYSQL_TCP_PORT</span>,<br><span class="hljs-regexp">/etc/my</span>.cnf <span class="hljs-regexp">/etc/my</span>sql<span class="hljs-regexp">/my.cnf ~/</span>.my.cnf  <span class="hljs-comment">#配置文件地址</span><br></code></pre></div></td></tr></table></figure>
-
-<h3 id="2-2-3-创建本地路径并挂载Docker内数据"><a href="#2-2-3-创建本地路径并挂载Docker内数据" class="headerlink" title="2.2.3 创建本地路径并挂载Docker内数据"></a>2.2.3 创建本地路径并挂载Docker内数据</h3><figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">mkdir -p <span class="hljs-regexp">/rundev/my</span>sql<span class="hljs-regexp">/conf &amp;&amp; mkdir -p /</span>rundev<span class="hljs-regexp">/mysql/</span>data<br></code></pre></div></td></tr></table></figure>
-<blockquote>
-<p>将测试容器里 MySQL 的配置文件复制到该路径。日后需改配置，直接在挂载路径的配置文件上修改即可</p>
-</blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">docker cp mysql-service:<span class="hljs-regexp">/etc/my</span>sql<span class="hljs-regexp">/my.cnf /</span>rundev<span class="hljs-regexp">/mysql/</span>conf<br></code></pre></div></td></tr></table></figure>
-
-<p>拷贝完配置文件后，停掉容器并删除，重新创建带配置文件挂载的服务</p>
-<h2 id="3-创建-MySQL-容器并启动"><a href="#3-创建-MySQL-容器并启动" class="headerlink" title="3. 创建 MySQL 容器并启动"></a>3. 创建 MySQL 容器并启动</h2><figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">docker run --name mysql-server \<br>-p <span class="hljs-number">3306</span>:<span class="hljs-number">3306</span> -e MYSQL_ROOT_PASSWORD=root \<br>--mount type=bind,src=<span class="hljs-regexp">/rundev/my</span>sql<span class="hljs-regexp">/conf/my</span>.cnf,dst=<span class="hljs-regexp">/etc/my</span>sql/my.cnf \<br>--mount type=bind,src=<span class="hljs-regexp">/rundev/my</span>sql<span class="hljs-regexp">/data,dst=/</span>var<span class="hljs-regexp">/lib/my</span>sql \<br>--restart=always \<br>-d mysql<br></code></pre></div></td></tr></table></figure>
-<blockquote>
-<p>–name：为容器指定一个名字<br>-p：指定端口映射，格式为：主机(宿主)端口:容器端口<br>-e：MYSQL_ROOT_PASSWORD=”xxx”，设置环境变量，密码<br>–restart=on-failure:3：是指容器在未来出现异常退出（退出码非0）的情况下循环重启3次<br>-mount：绑定挂载<br>-d：后台运行容器，并返回容器 id</p>
-</blockquote>
-<h2 id="4-更改字符集"><a href="#4-更改字符集" class="headerlink" title="4. 更改字符集"></a>4. 更改字符集</h2><p>如果想Mysql在后续的操作中中文不出现乱码,则需要修改配置文件内容</p>
-<h3 id="4-1-添加以下内容到my-cnf"><a href="#4-1-添加以下内容到my-cnf" class="headerlink" title="4.1 添加以下内容到my.cnf"></a>4.1 添加以下内容到my.cnf</h3><figure class="highlight ini"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ini"><span class="hljs-section">[mysqld]</span><br><span class="hljs-attr">character-set-server</span>=utf8<br><span class="hljs-section">[client]</span><br><span class="hljs-attr">default-character-set</span>=utf8<br><span class="hljs-section">[mysql]</span><br><span class="hljs-attr">default-character-set</span>=utf8<br></code></pre></div></td></tr></table></figure>
-
-<h3 id="4-2-重启docker-mysql-server容器"><a href="#4-2-重启docker-mysql-server容器" class="headerlink" title="4.2 重启docker mysql-server容器"></a>4.2 重启docker mysql-server容器</h3><p>docker restart mysql-server</p>
-<h2 id="5-其它方式"><a href="#5-其它方式" class="headerlink" title="5. 其它方式"></a>5. 其它方式</h2><figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">docker run --name mysql01 -p <span class="hljs-number">3306</span>:<span class="hljs-number">3306</span>  \<br>-v <span class="hljs-regexp">/rundev/my</span>sql<span class="hljs-regexp">/data:/</span>var<span class="hljs-regexp">/lib/my</span>sql \<br>-v <span class="hljs-regexp">/rundev/my</span>sql<span class="hljs-regexp">/conf:/</span>etc<span class="hljs-regexp">/mysql/</span> \<br>-e MYSQL_ROOT_PASSWORD=root -d mysql:version<br></code></pre></div></td></tr></table></figure>
+              <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p>在我使用redis不了解他的底层实现原理，一度的以为它很简单，用着用着感觉感觉不到它的奇妙感，但从我开始注重各技术的底层之后，感觉这世界变得奇妙了起来。</p>
+<p>一般redis的数据结构有以下几种：</p>
+<ol>
+<li>String：常用的数据类型，底层实现是简单动态字符串。</li>
+<li>List：列表，底层分别是双向链表和压缩列表。</li>
+<li>Hash：哈希表，底层实现是压缩列表和哈希表。</li>
+<li>Set：集合，底层实现是压缩列表和整数数组。</li>
+<li>SortedSet：有序集合，底层实现是压缩列表和跳表。<br>好了，redis常用的数据结构是这几个，结束了无聊的背题阶段，接下来进入正题。</li>
+</ol>
+<h2 id="一、String：简单动态字符串-SDS"><a href="#一、String：简单动态字符串-SDS" class="headerlink" title="一、String：简单动态字符串(SDS)"></a>一、String：简单动态字符串(SDS)</h2><h2 id="二、List：压缩列表、双向链表"><a href="#二、List：压缩列表、双向链表" class="headerlink" title="二、List：压缩列表、双向链表"></a>二、List：压缩列表、双向链表</h2><h2 id="三、Hash：哈希表、压缩列表"><a href="#三、Hash：哈希表、压缩列表" class="headerlink" title="三、Hash：哈希表、压缩列表"></a>三、Hash：哈希表、压缩列表</h2><h2 id="四、Set：压缩列表、整数数组"><a href="#四、Set：压缩列表、整数数组" class="headerlink" title="四、Set：压缩列表、整数数组"></a>四、Set：压缩列表、整数数组</h2><h2 id="五、SortedSet：压缩列表、跳表"><a href="#五、SortedSet：压缩列表、跳表" class="headerlink" title="五、SortedSet：压缩列表、跳表"></a>五、SortedSet：压缩列表、跳表</h2>
             </div>
             <hr>
             <div>
@@ -250,7 +234,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/fds-sunshine.github.io/categories/docker/">docker</a>
+                      <a class="hover-with-bg" href="/fds-sunshine.github.io/categories/redis/">redis</a>
                     
                   </div>
                 
@@ -258,7 +242,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/fds-sunshine.github.io/tags/mysql/">mysql</a>
+                      <a class="hover-with-bg" href="/fds-sunshine.github.io/tags/redis/">redis</a>
                     
                   </div>
                 
@@ -275,18 +259,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/fds-sunshine.github.io/2022/06/07/redis/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">redis数据结构</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/fds-sunshine.github.io/2022/04/02/distributed/concept/2PC%E5%8D%8F%E8%AE%AE%E4%B8%8E3PC%E5%8D%8F%E8%AE%AE/">
-                        <span class="hidden-mobile">2PC协议与3PC协议</span>
+                      <a href="/fds-sunshine.github.io/2022/04/14/docker/docker-mysql/">
+                        <span class="hidden-mobile">docker配置mysql(挂载配置文件)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

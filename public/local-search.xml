@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>redis数据结构</title>
+    <link href="/fds-sunshine.github.io/2022/06/07/redis/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <url>/fds-sunshine.github.io/2022/06/07/redis/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    
+    <content type="html"><![CDATA[<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p>在我使用redis不了解他的底层实现原理，一度的以为它很简单，用着用着感觉感觉不到它的奇妙感，但从我开始注重各技术的底层之后，感觉这世界变得奇妙了起来。</p><p>一般redis的数据结构有以下几种：</p><ol><li>String：常用的数据类型，底层实现是简单动态字符串。</li><li>List：列表，底层分别是双向链表和压缩列表。</li><li>Hash：哈希表，底层实现是压缩列表和哈希表。</li><li>Set：集合，底层实现是压缩列表和整数数组。</li><li>SortedSet：有序集合，底层实现是压缩列表和跳表。<br>好了，redis常用的数据结构是这几个，结束了无聊的背题阶段，接下来进入正题。</li></ol><h2 id="一、String：简单动态字符串-SDS"><a href="#一、String：简单动态字符串-SDS" class="headerlink" title="一、String：简单动态字符串(SDS)"></a>一、String：简单动态字符串(SDS)</h2><h2 id="二、List：压缩列表、双向链表"><a href="#二、List：压缩列表、双向链表" class="headerlink" title="二、List：压缩列表、双向链表"></a>二、List：压缩列表、双向链表</h2><h2 id="三、Hash：哈希表、压缩列表"><a href="#三、Hash：哈希表、压缩列表" class="headerlink" title="三、Hash：哈希表、压缩列表"></a>三、Hash：哈希表、压缩列表</h2><h2 id="四、Set：压缩列表、整数数组"><a href="#四、Set：压缩列表、整数数组" class="headerlink" title="四、Set：压缩列表、整数数组"></a>四、Set：压缩列表、整数数组</h2><h2 id="五、SortedSet：压缩列表、跳表"><a href="#五、SortedSet：压缩列表、跳表" class="headerlink" title="五、SortedSet：压缩列表、跳表"></a>五、SortedSet：压缩列表、跳表</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>redis</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>redis</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>docker配置mysql(挂载配置文件)</title>
     <link href="/fds-sunshine.github.io/2022/04/14/docker/docker-mysql/"/>
     <url>/fds-sunshine.github.io/2022/04/14/docker/docker-mysql/</url>
