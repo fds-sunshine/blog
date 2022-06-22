@@ -1,6 +1,6 @@
 ---
 title: acwing算法模板
-categories: ["acwing"]
+categories: ["acwing", "基础算法"]
 date: 2022-06-21 14:51:04
 tags: acwing
 description: 学习acwing算法基础课背诵与灵活应用的模板。
@@ -64,7 +64,7 @@ void merge_sort(int q[], int l, int r)
     int l = 0, r = n - 1;
     while (l < r)
     {
-        int mid = l + r >> 1;
+        int mid = l + r + 1>> 1;
         if (q[mid] <= x) l = mid;
         else r = mid - 1;
     }
