@@ -1,5 +1,5 @@
 ---
-title: acwing算法模板
+title: acwing算法模板-基础算法篇
 categories: ["acwing", "基础算法"]
 date: 2022-06-21 14:51:04
 tags: acwing
