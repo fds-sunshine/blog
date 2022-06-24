@@ -1,6 +1,6 @@
 ---
 title: acwing算法模板-基础算法篇
-categories: ["acwing", "基础算法"]
+categories: ["acwing"]
 date: 2022-06-21 14:51:04
 tags: acwing
 description: 学习acwing算法基础课背诵与灵活应用的模板。
