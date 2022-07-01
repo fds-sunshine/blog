@@ -128,7 +128,7 @@ dark_mode:
 color:
   # body 背景色
   # Color of body background
-  body_bg_color: "#eee"
+  body_bg_color: "#F0E68C"
   # 暗色模式下的 body 背景色，下同
   # Color in dark mode, the same below
   body_bg_color_dark: "#181c27"
@@ -180,7 +180,7 @@ color:
 
   # 主面板背景色
   # Color of main board
-  board_color: "#fff"
+  board_color: "#F0E68C"
   board_color_dark: "#252d38"
 
   # 滚动条颜色
