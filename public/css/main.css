@@ -294,12 +294,12 @@ sup > a::before,
   color: #ff4500;
 }
 html {
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 0.02em;
 }
 html,
 body {
-  font-family: Gill Sans;
+  font-family: Georgia,serif;
 }
 html,
 body,
@@ -360,11 +360,11 @@ img[lazyload] {
 }
 :root {
   --color-mode: 'light';
-  --body-bg-color: #F0E68C;
-  --board-bg-color: #F0E68C;
+  --body-bg-color: #F5F5D5;
+  --board-bg-color: #F5F5D5;
   --text-color: #3c4858;
   --sec-text-color: #718096;
-  --post-text-color: #2c3e50;
+  --post-text-color: #000;
   --post-heading-color: #1a202c;
   --post-link-color: #0366d6;
   --link-hover-color: #30a9de;
@@ -893,7 +893,7 @@ label {
 .markdown-body {
   font-size: 1rem;
   line-height: 1.6;
-  font-family: Gill Sans;
+  font-family: Georgia,serif;
   margin-bottom: 2rem;
   color: var(--post-text-color);
 }
