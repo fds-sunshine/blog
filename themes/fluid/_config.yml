@@ -128,10 +128,15 @@ dark_mode:
 color:
   # body 背景色
   # Color of body background
-  body_bg_color: "#F5F5D5"
+  body_bg_color: "#e9e9e9"
   # 暗色模式下的 body 背景色，下同
   # Color in dark mode, the same below
   body_bg_color_dark: "#181c27"
+
+    # 主面板背景色
+  # Color of main board
+  board_color: "#e9e9e9"
+  board_color_dark: "#252d38"
 
   # 顶部菜单背景色
   # Color of navigation bar background
@@ -177,11 +182,6 @@ color:
   # Color of link background when hovering
   link_hover_bg_color: "#f8f9fa"
   link_hover_bg_color_dark: "#364151"
-
-  # 主面板背景色
-  # Color of main board
-  board_color: "#F5F5D5"
-  board_color_dark: "#252d38"
 
   # 滚动条颜色
   # Color of scrollbar
